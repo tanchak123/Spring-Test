@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MusicPlayer {
     private List<Music> music = new ArrayList<>();
-    private String name ;
+    private String name;
     private int value;
 
     public void playMusic() {
