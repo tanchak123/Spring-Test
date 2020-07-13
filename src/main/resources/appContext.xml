@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="test.music" />
+    <context:property-placeholder location="classpath*:props.properties"/>
+    <bean class="test.music.ClassicMusic" id="classicMusic"/>
+    <bean class="test.music.RockMusic" name="rockMusic"/>
+    <bean class="test.music.RapMusic" name="rapMusic"/>
+    <bean class="test.music.MusicPlayer" name="musicPlayer">
+<!--        <constructor-arg ref="rockMusic"/>-->
+        <property name="music">
+            <list>
+                <ref bean="rockMusic"/>
+                <ref bean="classicMusic"/>
+                <ref bean="rapMusic"/>
+            </list>
+        </property>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="value" value="${musicPlayer.value}"/>
+    </bean>
+
+
+</beans>
