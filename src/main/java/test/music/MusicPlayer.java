@@ -33,8 +33,8 @@ public class MusicPlayer {
         return music;
     }
 
-    public void setMusic(List<Music> music) {
-        this.music = music;
+    public void setMusic(MusicList music) {
+        this.music = music.getListOfMusic();
     }
 }
 

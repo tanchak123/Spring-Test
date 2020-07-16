@@ -11,18 +11,21 @@
     <bean class="test.music.ClassicMusic" id="classicMusic"/>
     <bean class="test.music.RockMusic" name="rockMusic"/>
     <bean class="test.music.RapMusic" name="rapMusic"/>
-    <bean class="test.music.MusicPlayer" name="musicPlayer">
+    <bean class="test.music.MusicPlayer" id="musicPlayer">
 <!--        <constructor-arg ref="rockMusic"/>-->
-        <property name="music">
-            <list>
-                <ref bean="rockMusic"/>
-                <ref bean="classicMusic"/>
-                <ref bean="rapMusic"/>
-            </list>
-        </property>
+        <property name="music" ref="musicList"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="value" value="${musicPlayer.value}"/>
     </bean>
-
-
+    <bean class="test.music.MusicList" id="musicList">
+          <property name="listOfMusic">
+              <list>
+                  <ref bean="rockMusic"/>
+                  <ref bean="classicMusic"/>
+                  <ref bean="rapMusic"/>
+                  <ref bean="rapMusic"/>
+                  <ref bean="rapMusic"/>
+              </list>
+          </property>
+    </bean>
 </beans>
