@@ -1,6 +1,8 @@
 package test.service.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import test.dao.UserDao;
@@ -26,5 +28,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> listUsers() {
         return userDao.getAll();
+    }
+
+    public User findByLogin(String login) {
+        return listUsers().stream()
+                .filter(user -> user.getLogin().equals(login))
+                .findFirst()
+        .orElseThrow(() -> new NoSuchElementException("No such user"));
+    }
+
+    @PostConstruct
+    private void inject() {
+        add(new User("Sanya", "Vasya"));
+        add(new User("SANEK", "Vasilliy"));
+        add(new User("KTO", "WTO"));
     }
 }
