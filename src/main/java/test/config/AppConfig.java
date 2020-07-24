@@ -16,7 +16,8 @@ import test.model.User;
 @PropertySource("classpath:props.properties")
 @ComponentScan(basePackages = {
         "test.dao",
-        "test.service"
+        "test.service",
+        "test.model.mapper"
 })
 public class AppConfig {
 
